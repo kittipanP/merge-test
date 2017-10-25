@@ -339,7 +339,7 @@ if(isset($_POST["Import"])){
 
 	          	$result_edu = mysqli_query( $conn, $sql_edu) or die(mysqli_error($conn));
 	          	$result_app = mysqli_query( $conn, $sql_app) or die(mysqli_error($conn));
-	          	  	$result_res = mysqli_query( $conn, $sql_res) or die(mysqli_error($conn));
+	          	  	$result_res = mysqli_query( $conn, $sql_res) or die(mysqli_error());
 	          	  	$result_tsc = mysqli_query( $conn, $sql_tsc) or die(mysqli_error());
 	       	 		$result_vdo = mysqli_query( $conn, $sql_vdo) or die(mysqli_error());
 	           		$result_vsa = mysqli_query( $conn, $sql_vsa) or die(mysqli_error());
@@ -377,7 +377,7 @@ if(isset($_POST["Import"])){
 				{
 					echo "<script type=\"text/javascript\">
 							alert(\"Invalid File:Please Upload CSV File or check your file format.\");
-							window.location = \"../../../Student_Management.php\"
+							window.location = \"index.php\"
 						</script>";
 				
 				} 
@@ -388,7 +388,7 @@ if(isset($_POST["Import"])){
 	         //throws a message if data successfully imported to mysql database from excel file
 	         echo "<script type=\"text/javascript\">
 						alert(\"CSV File has been successfully Imported.\");
-						window.location = \"../../../Student_Management.php\"
+						window.location = \"index.php\"
 					</script>"; 
 	        
 			 

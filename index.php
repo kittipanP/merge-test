@@ -1,9 +1,9 @@
-<?php 
-       
+<?php
+
        ob_start();
        session_start();
        require_once 'db_connect/dbconnection.php';
-       
+
        //If session is not set, the page redirect to login
         if (!isset($_SESSION['user'])){
             header("Location: ui_connect/login/login.php");
@@ -16,7 +16,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <?php 
+    <?php
         //All the meta and css links
         require_once 'web_elements/head_link_index.php';
 ?>
@@ -40,15 +40,15 @@ header{ background: url(img/head/headerv.jpg);}
 <body class="w3-theme-l5">
 
 <!-- Navigation bar Code -->
-<?php 
-    
+<?php
+
     require_once 'web_elements/nav_bar_index.php';
 ?>
 
 <!-- Page Container -->
-<div class="w3-container w3-content" style="max-width:1400px;margin-top:60px;">   
+<div class="w3-container w3-content" style="max-width:1400px;margin-top:60px;">
     <!-- The Grid -->
-    <div class="w3-row"> 
+    <div class="w3-row">
 
             <!-- Header -->
             <header class="w3-container w3-theme w3-padding w3-round w3-opacity-min" id="myHeader">
@@ -58,10 +58,10 @@ header{ background: url(img/head/headerv.jpg);}
                     <h1 class="w3-xxxlarge w3-animate-right" style="text-shadow:3px 2px 0 #444" >CWIE Database Management System</h1>
 
                 </div>
-                
+
             </header>
 
- 
+
     <!-- Left Column -->
         <div class="w3-col l12">
             <div class="w3-row-padding w3-center w3-margin-top">
@@ -81,12 +81,12 @@ header{ background: url(img/head/headerv.jpg);}
                 <!-- Report Management-->
                 <div class="w3-third">
                     <div class="w3-card-2" style="min-height:200px">
-                        <a href="ui_connect/report/Report.php" >
+                        <a href="indexofreport.php" >
                             <img src="img/images/reportii.jpg" class="w3-hover-opacity" style="width:100%; height: 385px;"></a>
-                            
+
                                 <div class = "w3-container">
                                 <h4>Report</h4>
-                                
+
                                 </div>
                     </div>
                 </div>
@@ -96,7 +96,7 @@ header{ background: url(img/head/headerv.jpg);}
                     <div class="w3-card-2 w3-display-container"  style="min-height:200px">
                         <!--<a href="ui_connect/email_management/Email_Management.php"> -->
                             <img src="img/images/email.jpg" class="w3-hover-opacity" style="width:100%; height: 385px;">
-                              <div class="w3-display-middle w3-display-hover">  
+                              <div class="w3-display-middle w3-display-hover">
                                 <div class="w3-panel w3-blue-grey w3-card-2">
                                     <a href="ui_connect/email_management/Email_Management.php" class = "textdecoration"><p>Ended Trainee</p></a>
                                 </div>
@@ -109,7 +109,7 @@ header{ background: url(img/head/headerv.jpg);}
 
                                 <div class = "w3-container">
                                 <h4>Automated Email Management</h4>
-                                
+
                                 </div>
                     </div>
                 </div>
@@ -130,25 +130,25 @@ header{ background: url(img/head/headerv.jpg);}
             <p>&nbsp;</p>
 
             </div>
-        </div>    
-             
- 
+        </div>
 
-   
+
+
+
     <!-- End The Page Container -->
    </div>
 
 <?php
     //Script for toggling menu bar on small screen
-    require_once 'web_elements/script_menu.php';?> 
+    require_once 'web_elements/script_menu.php';?>
 
-    
-  <?php require_once 'web_elements/footer.php'; ?> 
- 
- 
+
+  <?php require_once 'web_elements/footer.php'; ?>
+
+
 
 
 
 
 </body>
-</html> 
+</html>

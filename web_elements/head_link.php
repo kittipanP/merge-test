@@ -10,4 +10,3 @@
 <link rel='stylesheet' href='../../libs/css/family=open_and_san.css'/>
 <link rel="icon" type="image/png" href="../../img/images/wd.png"/>
 <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">-->
-

@@ -5,7 +5,9 @@
 ?>
 <?php require_once('../../Connections/MyConnect.php'); ?>
 
+<?php 
 
+?>
 
 <?php include ("../../ui_connect/student_management/insert/stu-insert-reccordset.php"); ?>
 
@@ -15,6 +17,7 @@
   include ("../../ui_connect/student_management/insert/add-new-row/add-new-row-sql.php");
 
 ?>
+<?php //require_once('fn-upload.inc.php'); ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -23,35 +26,79 @@
 <title>Full Process for Inserting</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<link rel="icon" type="image/png" href="../../img/images/wd.png"/>
 
-
-<!-- include main links -->
-<?php require_once('../../web_elements/links/main-links.php'); ?>
-
-
-
+<link rel="stylesheet" href="../../libs/css/w3.css">
+<link rel="stylesheet" href="../../libs/css/w3-theme-blue-grey.css">
+<link rel='stylesheet' href='../../libs/css/css?family=Open+Sans'>
 <!--
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
-
+<link rel="stylesheet" href="../../libs/css/font-awesome-4.7.0/css/font-awesome.min.css?v=<?php echo filemtime('font-awesome.min.css'); ?>" type="text/css"> 
 <link href="../../SpryAssets/SpryTabbedPanels.css" rel="stylesheet" type="text/css" />
 
  
+
+
+      <!-- style full form-->
+      <link rel="stylesheet" href="../../libs/css/style-fullform.css?v=0214i" type="text/css">
+
+
+      <!-- style add form-->
+      <link rel="stylesheet" href="../../libs/css/style-addform.css?v=0214i" type="text/css">
+
+
+
+
+
 <link href="../../libs/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css" />
 <title>Index</title>
 <script src="../../SpryAssets/SpryTabbedPanels.js" type="text/javascript"></script>
 
+  <!-- customselect[]-->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
- 
- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.6/sweetalert2.css"> 
+    <script src='../../libs/jQuery-Customselect/src/jquery-customselect.js'></script>
+    <link href='../../libs/jQuery-Customselect/src/jquery-customselect.css?v=<55' rel='stylesheet' />
+    
+    <!-- alert-sweetAlert2  --> 
+    <!--
+    <link rel="stylesheet" href="../../libs/sweetAlert2/assets/bootstrap/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../libs/sweetAlert2/assets/swal2/sweetalert2.min.css" type="text/css" /> -->
 
+
+
+    <!--<link href='../../../libs/jQuery-Customselect/src/jquery-customselect.css?v=<?php echo filemtime('jquery-customselect.css'); ?>' rel='stylesheet' />-->
+    
+    <!-- ms-form-->
+    <link href="../../../libs/css/style-fullform.css?v=11" rel="stylesheet" type="text/css" />
+
+
+    <!-- Seach in Select-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.min.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.jquery.min.js"> </script>
 
   <!-- bootstrap-select --> 
-  <link rel="stylesheet" href="../../libs/bootstrap-select/dist/css/bootstrap.min.css?v=0928">
-  <link rel="stylesheet" href="../../libs/bootstrap-select/dist/css/bootstrap-select.css?v=0928"> 
+
+  <link rel="stylesheet" href="../../libs/bootstrap-select/dist/css/bootstrap.min.css?v=<?php echo filemtime('bootstrap.min.css'); ?>"> 
+  <link rel="stylesheet" href="../../libs/bootstrap-select/dist/css/bootstrap-select.css?v=<?php echo filemtime('bootstrap-select.css'); ?>"> 
   <script src="../../libs/bootstrap-select/dist/js/jquery.min.js"></script>
   <script src="../../libs/bootstrap-select/dist/js/bootstrap.min.js"></script>
   <script src="../../libs/bootstrap-select/dist/js/bootstrap-select.js"></script> 
 
+
+<!-- calendar-style -->
+<link rel="stylesheet" href="../../ui_connect/student_management/src/calendar.css">
+
+
+
+
+    <!-- alert-sweetAlert2-->   
+<!--    <link rel="stylesheet" href="../../libs/sweetAlert2/ajax-delete/assets/bootstrap/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../libs/sweetAlert2/ajax-delete/assets/swal2/sweetalert2.min.css" type="text/css" /> -->
+
+ 
+ <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.6/sweetalert2.css"> 
 
 
 </head>
@@ -105,7 +152,7 @@ header{ background: url(../../img/head/headerv.jpg);}
 
 <p>&nbsp;</p>
 
-    <form action="<?php echo $editFormAction; ?>" method="post" enctype="multipart/form-data" name="form1" id="fullform" >
+    <form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="fullform" enctype="multipart/form-data">
 
       <div id="TabbedPanels1" class="TabbedPanels">
         <ul class="TabbedPanelsTabGroup">
@@ -155,9 +202,145 @@ header{ background: url(../../img/head/headerv.jpg);}
 </div>
 
 <!-- ##########  div add a new row to database [S] ########## -->
+  <!-- major-add [S]-->
+  <div id="major-add" class="w3-modal w3-animate-opacity">
+    <div class="w3-modal-content w3-card-4">
+      <header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('major-add').style.display='none'" 
+        class="w3-button w3-large w3-display-topright" style="cursor: pointer">&times;&nbsp</span>
+        <h3>Reccord New Major</h3>
+      </header>
+      <div class="w3-container w3-center">
 
-    <!-- get add new row-->
-    <?php require_once '../../ui_connect/student_management/insert/add-new-row/get_add-new-row.php'; ?>
+
+              <?php include '../../ui_connect/student_management/insert/add-new-row/form-insert/add-major-form.php' ?>              
+
+                         
+      </div>
+    </div>
+  </div>
+  <!-- major-add [E]-->
+
+
+  <!--  institute-add [S]-->
+  <div id="ins-add" class="w3-modal w3-animate-opacity">
+    <div class="w3-modal-content w3-card-4">
+      <header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('ins-add').style.display='none'" 
+        class="w3-button w3-large w3-display-topright" style="cursor: pointer">&times;&nbsp</span>
+        <h3>Reccord New Institute</h3>
+      </header>
+      <div class="w3-container w3-center">
+
+
+              <?php include '../../ui_connect/student_management/insert/add-new-row/form-insert/add-ins-form.php' ?>              
+
+                         
+      </div>
+    </div>
+  </div>
+  <!-- institute-add [E]-->
+
+
+  <!--  language-add [S]-->
+  <div id="lg-add" class="w3-modal w3-animate-opacity">
+    <div class="w3-modal-content w3-card-4">
+      <header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('lg-add').style.display='none'" 
+        class="w3-button w3-large w3-display-topright" style="cursor: pointer">&times;&nbsp</span>
+        <h3>Reccord New Language</h3>
+      </header>
+      <div class="w3-container w3-center">
+
+
+              <?php include '../../ui_connect/student_management/insert/add-new-row/form-insert/add-lg-form.php' ?>              
+
+                         
+      </div>
+    </div>
+  </div>
+  <!-- Language-add [E]-->
+
+
+  <!--  Supervisor-add [S]-->
+  <div id="spv-add" class="w3-modal w3-animate-opacity">
+    <div class="w3-modal-content w3-card-4">
+      <header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('spv-add').style.display='none'" 
+        class="w3-button w3-large w3-display-topright" style="cursor: pointer">&times;&nbsp</span>
+        <h3>Reccord New Supervisor</h3>
+      </header>
+      <div class="w3-container w3-center">
+
+
+              <?php include '../../ui_connect/student_management/insert/add-new-row/form-insert/add-spv-form.php' ?>              
+
+                         
+      </div>
+    </div>
+  </div>
+  <!-- Supervisor-add [E]-->
+
+
+  <!--  Transportation Line - add [S]-->
+  <div id="tsp-add" class="w3-modal w3-animate-opacity">
+    <div class="w3-modal-content w3-card-4">
+      <header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('tsp-add').style.display='none'" 
+        class="w3-button w3-large w3-display-topright" style="cursor: pointer">&times;&nbsp</span>
+        <h3>Reccord New Transportation Line</h3>
+      </header>
+      <div class="w3-container w3-center">
+
+
+              <?php include '../../ui_connect/student_management/insert/add-new-row/form-insert/add-tsp-form.php' ?>              
+
+                         
+      </div>
+    </div>
+  </div>
+  <!-- Transportation Line - add [E]-->
+
+
+  <!-- Bank Branch -add [S]-->
+  <div id="bch-add" class="w3-modal w3-animate-opacity">
+    <div class="w3-modal-content w3-card-4">
+      <header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('bch-add').style.display='none'" 
+        class="w3-button w3-large w3-display-topright" style="cursor: pointer">&times;&nbsp</span>
+        <h3>Reccord New Bank Branch</h3>
+      </header>
+      <div class="w3-container w3-center">
+
+
+              <?php include '../../ui_connect/student_management/insert/add-new-row/form-insert/add-bch-form.php' ?>              
+
+                         
+      </div>
+    </div>
+  </div>
+  <!-- Bank Branch -add [E]-->
+
+
+  <!--  Department-add [S]-->
+  <div id="dep-add" class="w3-modal w3-animate-opacity">
+    <div class="w3-modal-content w3-card-4">
+      <header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('dep-add').style.display='none'" 
+        class="w3-button w3-large w3-display-topright" style="cursor: pointer">&times;&nbsp</span>
+        <h3>Reccord New Department</h3>
+      </header>
+      <div class="w3-container w3-center">
+
+
+              <?php include '../../ui_connect/student_management/insert/add-new-row/form-insert/add-dep-form.php' ?>              
+
+                         
+      </div>
+    </div>
+  </div>
+  <!-- Department-add [E]-->
+
 
 <!-- ##########  div add a new row to database [E] ########## -->
 

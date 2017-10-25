@@ -1,4 +1,4 @@
-<?php 
+<?php
     //Database connection
     require_once '../../db_connect/dbconnection.php'; //Connection to Database?>
 
@@ -14,32 +14,28 @@
             //All the meta and css links
             require_once '../../web_elements/head_link.php';
         ?>
-    
+
     <title>Login: WD Trainee</title>
 </head>
 
 <body class="w3-theme-l5">
 
 <!-- Page Container Start -->
-    <div class="w3-container w3-content" style="max-width:1400px;margin-top:2px">   
+    <div class="w3-container w3-content" style="max-width:1400px;margin-top:2px">
     <!-- The Grid Start -->
-        <div class="w3-row"> 
+        <div class="w3-row">
 
             <!-- Header -->
-<!--AUG 1, 2017 [S]
             <header class="w3-container w3-theme w3-padding w3-round" id="myHeader">
                 <div class="w3-center">
                     <h1 class="w3-xxlarge w3-animate-left">Welcome To</h1>
-                    <h1 class="w3-xxxlarge w3-animate-right">Trainee Management System</h1>
+                    <h1 class="w3-xxxlarge w3-animate-right">Smart CWIE Management System</h1>
                 </div>
             </header>
-AUG 1, 2017 [E]-->
             <p>&nbsp;</p>
              <p>&nbsp;</p>
               <p>&nbsp;</p>
-             <p>&nbsp;</p>
-              <p>&nbsp;</p>
-               
+
         <!--Login Code-->
             <form class = "login_form" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off">
                 <fieldset>
@@ -66,13 +62,13 @@ AUG 1, 2017 [E]-->
                         <?php if ( isset($passError) ) {?>
                         <h6 style = "text-align: left; color: red;"><?php echo $passError; ?></h6>
                     <?php }?>
-                    </div>   
-                    <input class="action-button w3-round" type ="submit" name = "btn-login" value = "Login"/>       
+                    </div>
+                    <input class="action-button w3-round" type ="submit" name = "btn-login" value = "Login"/>
                 </fieldset>
             </form>
         </div>
     </div>
-                    
+
 <p>&nbsp;</p>
 <p>&nbsp;</p><p>&nbsp;</p>
                 <p>&nbsp;</p>
@@ -83,12 +79,12 @@ AUG 1, 2017 [E]-->
 <!-- End Page Container -->
 
 
-<?php 
+<?php
     //Footer
-//AUG 1, 2017    require_once '../../web_elements/footer.php'; ?> 
+    require_once '../../web_elements/footer.php'; ?>
 
 <?php
     //Script for toggling menu bar on small screen
     require_once '../../web_elements/script_menu.php';?>
 </body>
-</html> 
+</html>

@@ -10,25 +10,19 @@ if (isset($_SERVER['QUERY_STRING'])) {
 }
 
 		/*-- Reccordset  [S]--*/
-		if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "spvForm")) {
+		if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "xxxForm")) {
 
 
-  	$insertSQL_spv = sprintf("INSERT INTO supervisor_info (spv_fname, spv_lname, spv_job, spv_ext, spv_mobile, spv_email, spv_dept, spv_bdg) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)",
-                       GetSQLValueString($_POST['spv_fname'], "text"),
-                       GetSQLValueString($_POST['spv_lname'], "text"),
-                       GetSQLValueString($_POST['spv_job'], "text"),
-                       GetSQLValueString($_POST['spv_ext'], "int"),
-                       GetSQLValueString($_POST['spv_mobile'], "int"),
-                       GetSQLValueString($_POST['spv_email'], "text"),
-                       GetSQLValueString($_POST['spv_dept'], "int"),
-                       GetSQLValueString($_POST['spv_bdg'], "int"));
+  	$insertSQL_x = sprintf("INSERT INTO xxxxx (xx, xx) VALUES (%s, %s)",
+                       GetSQLValueString($_POST['xx'], "int"),
+                       GetSQLValueString($_POST['xx'], "text"));
 
 	
 		  mysqli_select_db($MyConnect, $database_MyConnect);
 		  /*
 		  $Result1_ = mysqli_query($MyConnect, $insertSQL_) or die(mysqli_error());
 		  */
-		  $Result1_spv = mysqli_query($MyConnect, $insertSQL_spv) or die(mysqli_error($MyConnect));
+		  $Result1_x = mysqli_query($MyConnect, $insertSQL_x) or die(mysqli_error($MyConnect));
 
 
       $insertGoTo = "stu-insert-all.php";

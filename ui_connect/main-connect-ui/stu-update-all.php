@@ -35,10 +35,6 @@
       <!-- style full form-->
       <link rel="stylesheet" href="../../libs/css/style-fullform.css?v=0214i" type="text/css">
 
-      
-      <!-- style add form-->
-      <link rel="stylesheet" href="../../libs/css/style-addform.css?v=0214i" type="text/css">
-
 
 
 
@@ -77,13 +73,13 @@
 
 
   <!-- bootstrap-select --> 
-  <link rel="stylesheet" href="../../libs/bootstrap-select/dist/css/bootstrap.min.css?v=0928"> 
-  <link rel="stylesheet" href="../../libs/bootstrap-select/dist/css/bootstrap-select.css?v=0928"> 
+
+
+  <link rel="stylesheet" href="../../libs/bootstrap-select/dist/css/bootstrap.min.css?v=<?php echo filemtime('bootstrap.min.css'); ?>"> 
+  <link rel="stylesheet" href="../../libs/bootstrap-select/dist/css/bootstrap-select.css?v=<?php echo filemtime('bootstrap-select.css'); ?>"> 
   <script src="../../libs/bootstrap-select/dist/js/jquery.min.js"></script>
   <script src="../../libs/bootstrap-select/dist/js/bootstrap.min.js"></script>
   <script src="../../libs/bootstrap-select/dist/js/bootstrap-select.js"></script> 
-
-  
 
 <!--
   <script src="../../libs/bootstrap-select/dist/js/jquery.min.js"></script>
@@ -194,16 +190,21 @@ header{ background: url(../../img/head/headerv.jpg);}
 <!-- End Page Container -->
 </div>
 
-
-<!-- ##########  div add a new row to database [S] ########## -->
-
-    <!-- get add new row-->
-    <?php require_once '../../ui_connect/student_management/insert/add-new-row/get_add-new-row.php'; ?>
-
-<!-- ##########  div add a new row to database [E] ########## -->
-
-
-
+  <!-- major-add [S]-->
+  <div id="major-add" class="w3-modal w3-animate-opacity">
+    <div class="w3-modal-content w3-card-4">
+      <header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('major-add').style.display='none'" 
+        class="w3-button w3-large w3-display-topright" style="cursor: pointer">&times;&nbsp</span>
+        <h3>Reccord New Major</h3>
+      </header>
+      <div class="w3-container">
+        <p>Some text..</p>
+        <p>Some text..</p>
+      </div>
+    </div>
+  </div>
+  <!-- major-add [E]-->
 
 <script>
 // Accordion 

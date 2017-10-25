@@ -10,19 +10,19 @@ if (isset($_SERVER['QUERY_STRING'])) {
 }
 
 		/*-- Reccordset  [S]--*/
-		if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "bchForm")) {
+		if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "xxxForm")) {
 
 
-  	$insertSQL_bch = sprintf("INSERT INTO bnk_banch (bch_name, province_id) VALUES (%s, %s)",
-                       GetSQLValueString($_POST['bch_name'], "text"),
-                       GetSQLValueString($_POST['province_id'], "int"));
+  	$insertSQL_x = sprintf("INSERT INTO xxxxx (xx, xx) VALUES (%s, %s)",
+                       GetSQLValueString($_POST['xx'], "int"),
+                       GetSQLValueString($_POST['xx'], "text"));
 
 	
 		  mysqli_select_db($MyConnect, $database_MyConnect);
 		  /*
 		  $Result1_ = mysqli_query($MyConnect, $insertSQL_) or die(mysqli_error());
 		  */
-		  $Result1_bch = mysqli_query($MyConnect, $insertSQL_bch) or die(mysqli_error($MyConnect));
+		  $Result1_x = mysqli_query($MyConnect, $insertSQL_x) or die(mysqli_error($MyConnect));
 
 
       $insertGoTo = "stu-insert-all.php";

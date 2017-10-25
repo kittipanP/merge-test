@@ -1,4 +1,4 @@
-<?php 
+<?php
     //Database Connection
     require_once 'db_connect/dbconnection.php';?>
 
@@ -13,7 +13,7 @@
         <!--Student Icon-->
         <li class="w3-hide-small"><a href="ui_connect/Student_Management/Student_Management.php" class="w3-padding-large w3-hover-white" title="Student Management"><i class="fa fa-group"></i></a></li>
         <!--Report Icon-->
-        <li class="w3-hide-small"><a href="ui_connect/Report/Report.php" class="w3-padding-large w3-hover-white" title="Report"><i class="fa fa-bar-chart-o"></i></a></li>
+        <li class="w3-hide-small"><a href="indexofreport.php" class="w3-padding-large w3-hover-white" title="Report"><i class="fa fa-bar-chart-o"></i></a></li>
         <!--Report Icon-->
         <li class="w3-hide-small"><a href="ui_connect/Email_Management/Email_Management.php" class="w3-padding-large w3-hover-white" title="E-mail Management"><i class="fa fa-envelope"></i></a></li>
         <!-- Activity Icon-->
@@ -25,7 +25,7 @@
             </div>
         </li>
         <!-- Notification Icon-->
-        <li class="w3-hide-small w3-dropdown-hover"><a href="#" class="w3-padding-large w3-hover-white" title="Notifications"><i class="fa fa-bullhorn"></i><span class="w3-badge w3-right w3-small w3-green">3</span></a>     
+        <li class="w3-hide-small w3-dropdown-hover"><a href="#" class="w3-padding-large w3-hover-white" title="Notifications"><i class="fa fa-bullhorn"></i><span class="w3-badge w3-right w3-small w3-green">3</span></a>
             <div class="w3-dropdown-content w3-white w3-card-4"style="font-size: 17px;">
                 <!--PHP Code here for the notifications-->
                 <a href="#">Notification 1</a>

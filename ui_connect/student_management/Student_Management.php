@@ -1,12 +1,10 @@
 
-<?php 
+<?php
     //Database Connection
     require_once '../../db_connect/dbconnection.php';
 
     //Session Query
     require_once '../../ui_connect/login/query/session.php';
-
-
 
 ?>
 <?php
@@ -30,7 +28,7 @@ if ((isset($_GET['doLogout'])) &&($_GET['doLogout']=="true")){
   unset($_SESSION['MM_Username']);
   unset($_SESSION['MM_UserGroup']);
   unset($_SESSION['PrevUrl']);
-	
+
   $logoutGoTo = "../admin/index-login.php";
   if ($logoutGoTo) {
     header("Location: $logoutGoTo");
@@ -41,7 +39,7 @@ if ((isset($_GET['doLogout'])) &&($_GET['doLogout']=="true")){
 ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
-function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
 {
   if (PHP_VERSION < 8) {
     $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
@@ -52,7 +50,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
   switch ($theType) {
     case "text":
       $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-      break;    
+      break;
     case "long":
     case "int":
       $theValue = ($theValue != "") ? intval($theValue) : "NULL";
@@ -92,23 +90,13 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2")) {
 }
 ?>
 <?php require_once('../../Connections/MyConnect.php'); ?>
-<?php //include("fn-upload.inc.php"); 
+<?php include("fn-upload.inc.php");
 ?>
 <?php include ("student_management_reccordset.php");
-      //include ("printf/allController.php");
+      include ("printf/allController.php");
 	//include ("../admin/for-admin.php");
 
 ?>
-
-<?php //include ("../../ui_connect/student_management/insert/stu-insert-reccordset.php"); ?>
-
-<?php 
-
-  require_once('../../ui_connect/student_management/insert/add-new-row/get_add-new-row-for-main.php');
-
-?>
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -116,70 +104,47 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2")) {
 <meta charset="UTF-8">
 <title>Student Management</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../libs/css/w3.css">
+<link rel="stylesheet" href="../../libs/css/w3-theme-blue-grey.css">
+<link rel='stylesheet' href='../../libs/css/css?family=Open+Sans'>
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+<link rel="stylesheet" href="../../libs/css/font-awesome-4.7.0/css/font-awesome.min.css" type="text/css">
+<link href="../../libs/css/font-awesome.min.css" rel="stylesheet">
+
+<link rel="icon" type="image/png" href="../../img/images/wd.png"/>
+
+  <!-- For Multi Form -->
+<!--Bon	<link rel="stylesheet" href="../../libs/css/reset.min.css">
+	<link rel="stylesheet" href="../../libs/css/style.css?ver=2001" type="text/css">
+Bon-->
+  	<!--<link rel="stylesheet" href="../../libs/css/style-msform.css?v=<?php echo filemtime('style-msform.css'); ?>" type="text/css">-->
+    <link rel="stylesheet" href="../../libs/css/style-msform.css?v=0214i" type="text/css">
+
+    	<!-- According-Form-->
+      <!--<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>-->
+      <link rel="stylesheet" href="../../libs/css/style-according.css?v=0228i" type="text/css">
 
 
-<!-- include main links -->
-<?php include ('../../web_elements/links/main-links.php'); ?>
 
-
-  <!-- bootstrap-select --> 
-  <link rel="stylesheet" href="../../libs/bootstrap-select/dist/css/bootstrap.min.css?v=0928"> 
-  <link rel="stylesheet" href="../../libs/bootstrap-select/dist/css/bootstrap-select.css?v=0928"> 
-  <script src="../../libs/bootstrap-select/dist/js/jquery.min.js"></script>
-  <script src="../../libs/bootstrap-select/dist/js/bootstrap.min.js"></script>
-  <script src="../../libs/bootstrap-select/dist/js/bootstrap-select.js"></script> 
+<!-- alert-sweetAlert2-->
+    <link rel="stylesheet" href="../../libs/sweetAlert2/ajax-delete/assets/bootstrap/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../libs/sweetAlert2/ajax-delete/assets/swal2/sweetalert2.min.css" type="text/css" />
 
 
 
+<link rel="stylesheet" href="src/calendar.css">
 </head>
 
 <style>
-html,body,h1,h2,h3,h4,h5 {font-family: "Lato", sans-serif;}
-header{ background: url(../../img/head/headerv.jpg);} 
-
-body, html {
-    height: 500px;
-    color: #777;
-    line-height: 1.8;
+html,body,h1,h2,h3,h4,h5 {
 }
-
-/* Create a Parallax Effect */
-.bgimg-1, .bgimg-2 {
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-/* First image (Import Excel) */
-.bgimg-1 {
-    background-image: url('../../img/bg/inner-banner-bg.png');
-    min-height: 100%;
-}
-
-/* Second image (Add a new row feature management) */
-.bgimg-2 {
-    background-image: url("../../img/bg/dash3dbg.png");
-    min-height: 100%;
-
-
-.w3-wide {letter-spacing: 10px;}
-.w3-hover-opacity {cursor: pointer;}
-
-/* Turn off parallax scrolling for tablets and phones */
-@media only screen and (max-device-width: 1024px) {
-    .bgimg-1, .bgimg-2 {
-        background-attachment: scroll;
-    }
-}
+header{ background: url(../../img/head/headerv.jpg);}
 </style>
 
-
-
-<STYLE type=text/css> 
-A:link {COLOR: #000000 ; TEXT-DECORATION: none} 
-A:visited {COLOR: #000000; TEXT-DECORATION: none} 
-A:hover {COLOR: #000000; TEXT-DECORATION: underline} 
+<STYLE type=text/css>
+A:link {COLOR: #000000 ; TEXT-DECORATION: none}
+A:visited {COLOR: #000000; TEXT-DECORATION: none}
+A:hover {COLOR: #000000; TEXT-DECORATION: underline}
 </STYLE>
 
     <style type="text/css">
@@ -251,7 +216,7 @@ A:hover {COLOR: #000000; TEXT-DECORATION: underline}
                 </div>
             </li>
             <!-- Notification Icon-->
-            <li class="w3-hide-small w3-dropdown-hover "><a href="#" class="w3-padding-large w3-hover-white" title="Notifications"><i class="fa fa-bullhorn"></i><span class="w3-badge w3-right w3-small w3-green">3</span></a>     
+            <li class="w3-hide-small w3-dropdown-hover "><a href="#" class="w3-padding-large w3-hover-white" title="Notifications"><i class="fa fa-bullhorn"></i><span class="w3-badge w3-right w3-small w3-green">3</span></a>
                 <div class="w3-dropdown-content w3-white w3-card-4"style="font-size: 17px;">
                     <!--PHP Code here for the notifications-->
                     <a href="#">Notification 1</a>
@@ -274,16 +239,16 @@ A:hover {COLOR: #000000; TEXT-DECORATION: underline}
         </ul>
     </div>
     <!-- Navbar [E] ## Navbar [E] ## Navbar [E] ## Navbar [E] ## Navbar [E] ## Navbar [E] ## Navbar [E] -->
-    
+
     <!-- Navbar on Small Screens [S] ### Navbar on Small Screens [S] ### Navbar on Small Screens [S] ### Navbar on Small Screens [S] -->
     <div id="navDemo" class="w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:51px">
       <ul class="w3-navbar w3-left-align w3-large w3-theme">
           <li><a class="w3-padding-large" href="#">Student Management</a></li>
-          <li><a class="w3-padding-large" href="../../indexofreport.php">Report</a></li>
+          <li><a class="w3-padding-large" href="../../ui_connect/Report/Report.php">Report</a></li>
           <li><a class="w3-padding-large" href="../../ui_connect/Email_Management/Email_Management.php">E-mail Management</a></li>
           <li ><a class="w3-padding-large " href="../../ui_connect/my_profile/my_profile.php">My Profile</a></li>
       </ul>
-    </div> 
+    </div>
 		<!-- Navbar on Small Screens [E] ### Navbar on Small Screens [E] ### Navbar on Small Screens [E] ### Navbar on Small Screens [E] -->
 
     <!-- Navigation II [S] ## Navigation II [S] ## Navigation II [S] ## Navigation II [S] ## Navigation II [S] ## Navigation II [S] style="text-decoration:none; cursor: pointer;"-->
@@ -295,52 +260,46 @@ A:hover {COLOR: #000000; TEXT-DECORATION: underline}
             <a onclick="document.getElementById('id01').style.display='block', w3_close()" >&nbsp;&nbsp;<i class="fa fa-flash w3-margin-right" ></i>&nbsp;Fast Process</a>
             <a href="../../ui_connect/main-connect-ui/stu-insert-all.php" class="w3-bar-item w3-button">&nbsp;&nbsp;<i class="fa fa-plus w3-margin-right"></i>Full Process</a>
           </div>
-
-
-          <a href="#import" onclick="w3_close()"><i class="fa fa-file-excel-o w3-margin-right"></i> Import Data</a>
-          <a href="#addNew" onclick="w3_close()"><i class="fa fa-database w3-margin-right"></i> Database Elements Management</a>
           <a href="#allRecent" onclick="w3_close()"><i class="fa fa-globe w3-margin-right"></i> All</a>
           <a href="#onProcesss" onclick="w3_close()"><i class="fa fa-address-book w3-margin-right"></i> On Process</a>
           <a href="#waitingOnBoard" onclick="w3_close()"><i class="fa fa-thumbs-up w3-margin-right"></i> Waiting on Board</a>
           <a href="#reject" onclick="w3_close()"><i class="fa fa-ban w3-margin-right"></i> Reject</a>
           <a href="#trainee" onclick="w3_close()"><i class="fa fa-id-card w3-margin-right"></i>Trainee</a>
-          <a href="#oldTrainee"  onclick="w3_close()"><i class="fa fa-list w3-margin-right"></i>Old Trainee</a>
+          <a href="#oldTrainee" onclick="w3_close()"><i class="fa fa-list w3-margin-right"></i>Old Trainee</a>
     </nav>
     <!-- Navigation II [E] ## Navigation II [E] ## Navigation II [E] ## Navigation II [E] ## Navigation II [E] ## Navigation II [E] -->
-        
+
         <div class="w3-overlay w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay">
         </div>
-        
-         
+
+
         <div class="w3-container">
 
           <div id="id01" class="w3-modal">
-
-            <?php include 'insert/multi-i/insert-msForm.php' ?></div>
-            <?php //include 'multiple-step-form-insert.php' ?></div>
+            <?php include 'multiple-step-form-insert.php' ?></div>
           <div id="stu-edit" class="w3-modal">
              </div>
         </div>
         <!-- Muti Step Form for Update [E] ## Muti Step Form for Update [E] ## Muti Step Form for Update [E]  -->
-                    
-        
+
+
 <!--		</div> -->
-        
+
 
 	<!-- Page Container -->
-  <div class="w3-container w3-content" style="max-width:1400px;margin-top:60px">   
+  <div class="w3-container w3-content" style="max-width:1400px;margin-top:60px">
 
     <!-- The Grid -->
-    <div class="w3-row"> 
-            
-            
-      <!-- Header -->
-      <header class="w3-container w3-theme w3-padding w3-opacity-min" id="myHeader"> 
+    <div class="w3-row">
 
-        <!-- Navigation II--> 
-        <div class="w3-left">      
-        <span class="w3-opennav w3-xxlarge" onclick="w3_open()">&#9776;</span>  
-        </div>         
+
+      <!-- Header -->
+      <header class="w3-container w3-theme w3-padding w3-opacity-min" id="myHeader">
+
+        <!-- Navigation II-->
+        <div class="w3-left">
+        <span class="w3-opennav w3-xxlarge" onclick="w3_open()">&#9776;</span>
+        </div>
         <!--<i onclick="w3_open()" class="fa fa-bars w3-xlarge w3-opennav"></i> -->
         <div class="w3-left">
             <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Welcome to ..            </h4>
@@ -348,9 +307,9 @@ A:hover {COLOR: #000000; TEXT-DECORATION: underline}
             <p><!--<div class="w3-padding-32">
                   <button class="w3-btn w3-xlarge w3-dark-grey w3-hover-light-grey" onclick="#" style="font-weight:900;">ห้ามกดเด็ดขาด</button>
               </div>-->        </p>
-          
+
           <!--<div class="w3-container">
-          <a class="w3-button w3-xlarge w3-teal w3-card-4"> &nbsp;+&nbsp; </a>  
+          <a class="w3-button w3-xlarge w3-teal w3-card-4"> &nbsp;+&nbsp; </a>
     	  </div>-->
         </div>
       </header>
@@ -362,46 +321,46 @@ A:hover {COLOR: #000000; TEXT-DECORATION: underline}
 
                 <!-- First Column-->
                 <div class="w3-third">
-                    <div class="w3-card-4 " style="min-height:470px"><!--490-->
+                    <div class="w3-card-4 " style="min-height:491px"><!--490-->
 
                       <!-- add_fast-->
-                      
+
                           <div class="w3-half w3-display-container " style="min-height:200px">
                               <a onclick="document.getElementById('id01').style.display='block', w3_close()" class = "textdecoration">
                                   <img src="../../img/images/add_fast.jpg" class="w3-hover-opacity" style="width:100%; height: 400px; ">
 
-                                  <div class="w3-display-topleft w3-display-hover"> 
+                                  <div class="w3-display-topleft w3-display-hover">
                                     <div class="w3-panel w3-blue-grey w3-card-4 ">
                                       <a href="" class = "textdecoration"><p>Fast Process</p></a>
                                     </div>
                                   </div>
-                                      
+
                               </a>
                               <div class = "w3-container w3-padding-32 w3-right" >
                                 <h4>C R E A T E</h4>
                               </div>
                           </div>
-                      
+
                       <!-- add_full-->
-                      
+
                           <div class="w3-half w3-display-container" style="min-height:200px">
                               <a href="
                               ../../ui_connect/main-connect-ui/stu-insert-all.php">
                                   <img src="../../img/images/add_full.jpg" class="w3-hover-opacity" style="width:100%; height: 400px; ">
 
-                                  <div class="w3-display-topright w3-display-hover"> 
+                                  <div class="w3-display-topright w3-display-hover">
                                     <div class="w3-panel w3-blue-grey w3-card-4 ">
                                       <a href="../../ui_connect/main-connect-ui/stu-insert-all.php"><p>Full Process</p></a>
                                     </div>
                                   </div>
-                                      
+
                               </a>
                               <div class = "w3-container w3-padding-32 w3-left" >
                                 <h4>&nbsp;&nbsp;N E W</h4>
                               </div>
                           </div>
-                      
-                        
+
+
 
                     </div>
                 </div>
@@ -410,7 +369,7 @@ A:hover {COLOR: #000000; TEXT-DECORATION: underline}
 
                 <!-- Second Column -->
                 <div class="w3-twothird">
-                    <div class="w3-card-4" style="min-height:470px">
+                    <div class="w3-card-4 " style="min-height:491px">
 
                       <!-- All -->
                       <div class="w3-third">
@@ -418,9 +377,9 @@ A:hover {COLOR: #000000; TEXT-DECORATION: underline}
                             <a href="../../ui_connect/main-connect-ui/all-status.php" class = "textdecoration">
                               <img src="../../img/images/all.jpg" class="w3-hover-opacity" style="width:100%; height: 200px; ">
                               <div class = "w3-container" >
-                                 <h4> All</h4> 
+                                 <h4> All</h4>
                               </div>
-                            </a>   
+                            </a>
                           </div>
                       </div>
                       <!-- On Process -->
@@ -431,12 +390,12 @@ A:hover {COLOR: #000000; TEXT-DECORATION: underline}
                                 <div class="" style="min-height:">
                                   <a href="../../ui_connect/main-connect-ui/onProcess.php" class = "textdecoration">
                                     <img src="../../img/images/onProi.jpg" class="w3-hover-opacity" style="width:100%; height: 105px; ">
-                                      <div class="w3-display-middle w3-display-hover"> 
+                                      <div class="w3-display-middle w3-display-hover">
                                         <div class="w3-panel w3-orange w3-card-2 ">
-                                          <a href="../../ui_connect/main-connect-ui/onProcess.php" class = "textdecoration"><p>Incomplete Documentation</p></a>
+                                          <a href="../../ui_connect/main-connect-ui/onProcess.php" class = "textdecoration"><p>Incomplet Documentation</p></a>
                                         </div>
                                       </div>
-                                  </a>   
+                                  </a>
                                 </div>
                             </div>
                             <!-- On Process ii -->
@@ -444,19 +403,19 @@ A:hover {COLOR: #000000; TEXT-DECORATION: underline}
                                 <div class="" style="min-height:">
                                   <a href="../../ui_connect/main-connect-ui/onProcess.php" class = "textdecoration">
                                     <img src="../../img/images/onProii.jpg" class="w3-hover-opacity" style="width:100%; height: 100px; ">
-                                      <div class="w3-display-middle w3-display-hover"> 
+                                      <div class="w3-display-middle w3-display-hover">
                                         <div class="w3-panel w3-green w3-card-2 ">
-                                          <a href="../../ui_connect/main-connect-ui/onProcess.php" class = "textdecoration"><p>Complete Documentation</p></a>
+                                          <a href="../../ui_connect/main-connect-ui/onProcess.php" class = "textdecoration"><p>Complet Documentation</p></a>
                                         </div>
                                       </div>
-                                  </a>   
+                                  </a>
                                 </div>
                             </div>
                             <a href="../../ui_connect/main-connect-ui/onProcess.php">
                               <div class = "w3-container" >
-                                 <h4> Student on Process</h4> 
+                                 <h4> Stusent on Process</h4>
                               </div>
-                            </a>  
+                            </a>
                           </div>
                       </div>
                       <!-- Waiting on Board -->
@@ -465,22 +424,22 @@ A:hover {COLOR: #000000; TEXT-DECORATION: underline}
                             <a href="../../ui_connect/main-connect-ui/waitingOnBoard.php" class = "textdecoration">
                               <img src="../../img/images/wait.jpg" class="w3-hover-opacity" style="width:100%; height: 200px; ">
                               <div class = "w3-container" >
-                                 <h4> Student on Board</h4> 
+                                 <h4> Student on Board</h4>
                               </div>
-                            </a>   
+                            </a>
                           </div>
                       </div>
 
-          
+
                       <!-- Trainee -->
                       <div class="w3-third">
                           <div class="w3-card-4 " style="min-height:">
                             <a href="../../ui_connect/main-connect-ui/trainee.php">
                               <img src="../../img/images/tni.jpg" class="w3-hover-opacity" style="width:100%; height: 200px; ">
                               <div class = "w3-container" >
-                                 <h4> Trainee</h4> 
+                                 <h4> Trainee</h4>
                               </div>
-                            </a>   
+                            </a>
                           </div>
                       </div>
                       <!-- Old Trainee -->
@@ -489,9 +448,9 @@ A:hover {COLOR: #000000; TEXT-DECORATION: underline}
                             <a href="../../ui_connect/main-connect-ui/endedtrainee.php">
                               <img src="../../img/images/old.jpg" class="w3-hover-opacity" style="width:100%; height: 200px; ">
                               <div class = "w3-container" >
-                                 <h4> Ended Trainee</h4> 
+                                 <h4> Ended Trainee</h4>
                               </div>
-                            </a>   
+                            </a>
                           </div>
                       </div>
                       <!-- Rejected -->
@@ -500,9 +459,9 @@ A:hover {COLOR: #000000; TEXT-DECORATION: underline}
                             <a href="../../ui_connect/main-connect-ui/rejectedStudent.php">
                               <img src="../../img/images/rejected.jpg" class="w3-hover-opacity" style="width:100%; height: 200px; ">
                               <div class = "w3-container" >
-                                 <h4> Rejected Student</h4> 
+                                 <h4> Rejected Student</h4>
                               </div>
-                            </a>   
+                            </a>
                           </div>
                       </div>
 
@@ -524,24 +483,18 @@ A:hover {COLOR: #000000; TEXT-DECORATION: underline}
             </div> -->
 
             </div>
-        </div>    
-    
+        </div>
 
 
-      
+
+
     <!-- End The Grid -->
     </div>
   <!-- End Page Container -->
   </div>
- 
 
 
-        </p>
-
-
-
-      
-    <!-- Filter Table All -->     
+    <!-- Filter Table All -->
     <div id="allRecent">
 
       <div id="load-all-status-forMain"></div><!-- load */all-status-forMain.php -->
@@ -579,60 +532,20 @@ A:hover {COLOR: #000000; TEXT-DECORATION: underline}
 	  <div id="reject">
 
       <div id="load-rejectedStu-table-forMain"></div><!-- load */rejectedStu-table-forMain.php -->
-          
-    </div> 
-
-
-    <!-- First Parallax Image with Portfolio Text -->
-    <div class="bgimg-1 w3-display-container w3-opacity-min">
-      <div class="w3-display-middle">
-        <span class="w3-xxlarge w3-text-white w3-wide">IMPORT EXCEL TO DATABASE</span>
-      </div>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
     </div>
-        <div id="import">
 
-          <div id="load-importExcel"></div><!-- load */importExcel.php -->
-
-        </div> 
-
-
-    <!-- Second Parallax Image with Portfolio Text -->
-    <div class="bgimg-2 w3-display-container w3-opacity-min">
-      <div class="w3-display-middle">
-        <span class="w3-xxlarge w3-text-white w3-wide">ADD A NEW ROW</span>
-      </div>
-    </div>
-        <div id="addNew">
-
-          <div id="load-addNew"></div><!-- load */importExcel.php -->
-
-        </div> 
-
-        <p>
-          
-        </p>
-
-
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    
     <!--Calendar-->
     <div id="wdS"></div>
-    <div id="wdE"></div> 
+    <div id="wdE"></div>
     <div id="wexS"></div>
     <div id="wexE"></div>
-    
-	
-<!-- ##########  div add a new row to database [S] ########## -->
 
-    <!-- get add new row-->
-    <?php require_once '../../ui_connect/student_management/insert/add-new-row/get_add-new-row.php'; ?>
 
-<!-- ##########  div add a new row to database [E] ########## -->
 
-    
-    
+
     <!-- Nav Acc-->
 <script>
 function myAccFunc() {
@@ -640,36 +553,36 @@ function myAccFunc() {
     if (x.className.indexOf("w3-show") == -1) {
         x.className += " w3-show";
         x.previousElementSibling.className += " w3-green";
-    } else { 
+    } else {
         x.className = x.className.replace(" w3-show", "");
-        x.previousElementSibling.className = 
+        x.previousElementSibling.className =
         x.previousElementSibling.className.replace(" w3-green", "");
     }
 }
 </script>
-    
-    
- 
+
+
+
     <!-- alert-sweetAlert2 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="../../libs/sweetAlert2/ajax-delete/assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../../libs/sweetAlert2/ajax-delete/assets/swal2/sweetalert2.min.js"></script>        
+    <script src="../../libs/sweetAlert2/ajax-delete/assets/swal2/sweetalert2.min.js"></script>
     <script>
       $(document).ready(function(){
-        
+
         readProducts(); /* it will load products when document loads */
-        
+
         $(document).on('click', '#delete_product', function(e){
-          
+
           var productId = $(this).data('id');
           SwalDelete(productId);
           e.preventDefault();
         });
-        
+
       });
-      
+
       function SwalDelete(productId){
-        
+
         swal({
           title: 'Are you sure?',
           text: "It will be deleted permanently!",
@@ -679,10 +592,10 @@ function myAccFunc() {
           cancelButtonColor: '#d33',
           confirmButtonText: 'Yes, delete it!',
           showLoaderOnConfirm: true,
-            
+
           preConfirm: function() {
             return new Promise(function(resolve) {
-                 
+
                $.ajax({
                 url: 'delete.php',
                 type: 'POST',
@@ -698,38 +611,36 @@ function myAccFunc() {
                });
             });
             },
-          allowOutsideClick: false        
-        }); 
-        
+          allowOutsideClick: false
+        });
+
       }
-      
+
       function readProducts(){
-        $('#load-all-status-forMain').load('../../ui_connect/student_management/split-by-status/all-status-forMain.php'); 
-        $('#load-onProcess-table-forMain').load('../../ui_connect/student_management/split-by-status/onProcess-table-forMain.php');  
-        $('#load-waitingOnBoard-table-forMain').load('../../ui_connect/student_management/split-by-status/waitingOnBoard-table-forMain.php');  
-        $('#load-trainee-table-forMain').load('../../ui_connect/student_management/split-by-status/trainee-table-forMain.php');  
-        $('#load-endedTrainee-table-forMain').load('../../ui_connect/student_management/split-by-status/endedTrainee-table-forMain.php');  
-        $('#load-rejectedStu-table-forMain').load('../../ui_connect/student_management/split-by-status/rejectedStu-table-forMain.php'); 
-  
-        $('#load-importExcel').load('../../ui_connect/student_management/insert/import/excel/importExcel.php'); 
-        $('#load-addNew').load('../../ui_connect/student_management/printf/feature-add_a_new_row.php'); 
+        $('#load-all-status-forMain').load('../../ui_connect/student_management/split-by-status/all-status-forMain.php');
+        $('#load-onProcess-table-forMain').load('../../ui_connect/student_management/split-by-status/onProcess-table-forMain.php');
+        $('#load-waitingOnBoard-table-forMain').load('../../ui_connect/student_management/split-by-status/waitingOnBoard-table-forMain.php');
+        $('#load-trainee-table-forMain').load('../../ui_connect/student_management/split-by-status/trainee-table-forMain.php');
+        $('#load-endedTrainee-table-forMain').load('../../ui_connect/student_management/split-by-status/endedTrainee-table-forMain.php');
+        $('#load-rejectedStu-table-forMain').load('../../ui_connect/student_management/split-by-status/rejectedStu-table-forMain.php');
+      }
 
-      } 
 
-      
     </script>
 
 
-   
-    
-<?php 
-    //Footer
-    require_once '../../web_elements/footer.php'; 
-?>     
-    
-    
- 
-<?php include ("js-script/js-script.php"); ?>    
+
+
+<!-- Footer -->
+    <footer class="w3-container w3-theme-d3 w3-padding-16">
+      <h5>Footer</h5>
+    </footer>
+
+    <footer class="w3-container w3-theme-d5">
+       <p>By <a href="http://www.facebook.com/Bon.KP" target="_blank">บอนไง จะใครล่ะ ^^</a></p>
+    </footer>
+
+<?php include ("js-script/js-script.php"); ?>
 
 </body>
 </html>
@@ -755,7 +666,7 @@ mysqli_free_result($statusSet);
 mysqli_free_result($educationSet);
 
 //mysqli_free_result($collageSet);
-  
+
 //mysqli_free_result($itpSet);
 
 /*mysqli_free_result($studentSet);*/
